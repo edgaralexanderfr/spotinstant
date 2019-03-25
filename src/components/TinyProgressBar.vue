@@ -20,25 +20,34 @@ export default {
   },
   data() {
     return {
-      progress: 0
-    }
-  },
-  methods: {
-    setProgress: function (progress) {
-      if (isNaN(progress)) {
-        return;
-      }
-
-      if (progress < 0) {
-        this.progress = 0;
-      } else if (progress > 100) {
-        this.progress = 100;
-      } else {
-        this.progress = progress;
-      }
+      progressData: 0
     }
   },
   computed: {
+    /**
+     * Getters & setters:
+     */
+    progress: {
+      get: function () {
+        return this.progressData;
+      },
+      set: function (newValue) {
+        if (isNaN(newValue)) {
+          return;
+        }
+
+        if (newValue < 0) {
+          this.progressData = 0;
+        } else if (newValue > 100) {
+          this.progressData = 100;
+        } else {
+          this.progressData = +newValue;
+        }
+      }
+    },
+    /**
+     * Other:
+     */
     styledBar: function () {
       return {
         'height': this.height + 'px'
@@ -46,7 +55,7 @@ export default {
     },
     styledProgress: function () {
       return {
-        'width': this.progress + '%', 
+        'width': this.progressData + '%', 
         'background-color': this.color
       }
     }
