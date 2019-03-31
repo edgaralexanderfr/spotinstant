@@ -1,4 +1,6 @@
-# spotinstant
+# SpotInstant
+
+**Note:** this project is under development.
 
 ## Project setup
 ```
